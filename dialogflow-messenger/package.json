@@ -1,5 +1,6 @@
 {
   "name": "dialogflow-messenger",
+  "homepage": "https://jonh01.github.io/dialogflow-integrations",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
