@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {Dispatch, SetStateAction} from 'react';
 import {RichContentCard} from '../Styles';
 import {isPayloadList, isDivider, isChips, isRichContent} from '../utilities/typeguards';
