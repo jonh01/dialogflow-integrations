@@ -78,6 +78,11 @@
             chatBot.setAttribute("chat-title", "ChatBot Verde");
 
             document.body.appendChild(chatBot);
+
+            // Carregar script do Dialogflow Messenger
+            var script = document.createElement("script");
+            script.src = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js";
+            document.body.appendChild(script);
         }
 
         // Espera o carregamento da página e inicia o chatbot
