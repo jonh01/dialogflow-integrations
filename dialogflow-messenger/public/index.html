@@ -29,9 +29,6 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <df-messenger
-      chat-title="Development Messenger"
-    />
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -42,5 +39,49 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+      <script>
+        // Função para criptografar em Base64
+        function encryptChatBot(text) {
+            return btoa(text);
+        }
+
+        // Função para descriptografar Base64
+        function decryptChatBot(encodedText) {
+            try {
+                return atob(encodedText);
+            } catch (e) {
+                console.error("Erro ao decodificar Base64:", e);
+                return "";
+            }
+        }
+
+        // Função para iniciar o chatbot
+        function initChatBot() {
+            // Pergunta os IDs ao usuário
+            var projectIdRaw = prompt("Digite o Project ID do Dialogflow CX:");
+            var agentIdRaw = prompt("Digite o Agent ID do Dialogflow CX:");
+
+            if (!projectIdRaw || !agentIdRaw) {
+                alert("Os IDs são obrigatórios!");
+                return;
+            }
+
+            var projectId = encryptChatBot(projectIdRaw);
+            var agentId = encryptChatBot(agentIdRaw);
+
+            // Criar chatbot dinamicamente
+            var chatBot = document.createElement("df-messenger");
+            chatBot.setAttribute("project-id", decryptChatBot(projectId));
+            chatBot.setAttribute("agent-id", decryptChatBot(agentId));
+            chatBot.setAttribute("language-code", "en");
+            chatBot.setAttribute("max-query-length", "-1");
+            chatBot.setAttribute("chat-title", "ChatBot Verde");
+
+            document.body.appendChild(chatBot);
+        }
+
+        // Espera o carregamento da página e inicia o chatbot
+        document.addEventListener("DOMContentLoaded", initChatBot);
+      </script>
   </body>
 </html>
